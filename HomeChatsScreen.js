@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Platform,
+  BackHandler,
 } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
@@ -46,9 +47,9 @@ export default class HomeChatsScreen extends React.Component {
         <View>
           { Platform.OS !== 'ios' ?
           <ImageSlider images={[
-              'http://placeimg.com/640/480/any',
-              'http://saladinid.com/about_files/saladinid-profile.jpg',
-              'http://placeimg.com/640/480/animal'
+            require('./img/mekar.png'),
+            require('./img/mekar.png'),
+            require('./img/mekar.png')
           ]} position={this.state.position}
               onPositionChanged={position => this.setState({position})}/>
           :
@@ -56,27 +57,29 @@ export default class HomeChatsScreen extends React.Component {
               style={styles.container}
               indicator={this._renderDotIndicator()}
           >
-              <View style={{backgroundColor:'#544654',width:'100px',height:'100%'}}>
-                  <Text>page one</Text>
-                  <Image
-                    style={styles.stretch}
-                    source={require('./madagascar_penguins.png')}
-                  />
+              <View style={{backgroundColor:'#643213',width:'100%',height:200,}}>
+                <View style={{backgroundColor:'#544654',width:'100%',height:200,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+                    <Image
+                        style={{width:'100%',height:200,resizeMode: 'cover',zIndex: 0,position: 'absolute', left: 0, right: 0,}}
+                        source={require('./img/mekar.png')}
+                    />
+                </View>
               </View>
-              <View style={{backgroundColor:'#643213',width:'100px',height:'100%'}}>
-                  <Text>page two</Text>
-                  <Image
-                    style={styles.stretch}
-                    source={require('./madagascar_penguins.png')}
-                  />
+              <View style={{backgroundColor:'#643213',width:'100%',height:200,}}>
+                <View style={{backgroundColor:'#643213',width:'100%',height:200,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+                    <Image
+                        style={{width:'100%',height:200,resizeMode: 'cover',zIndex: 0,position: 'absolute', left: 0, right: 0,}}
+                        source={require('./img/mekar.png')}
+                    />
+                </View>
               </View>
-              <View style={{backgroundColor:'#1AA094',width:'100px',height:'100%'}}>
-                  <Text>page three</Text>
-                  <Image
-                    style={styles.stretch}
-                    source={require('./madagascar_penguins.png')}
-                  />
-                  {/* <Button title='Button' onPress={this.alert} /> */}
+              <View style={{backgroundColor:'#643213',width:'100%',height:200,}}>
+                <View style={{backgroundColor:'#1AA094',width:'100%',height:200,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+                    <Image
+                        style={{width:'100%',height:200,resizeMode: 'cover',zIndex: 0,position: 'absolute', left: 0, right: 0,}}
+                        source={require('./img/mekar.png')}
+                    />
+                </View>
               </View>
           </IndicatorViewPager>
         }
@@ -94,11 +97,10 @@ export default class HomeChatsScreen extends React.Component {
   
   }
 
-
   const styles = StyleSheet.create({
     container: {
         overflow: 'hidden',
         width: '100%',
-        height: 200
+        height: 200,
     }
   });

@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Platform,
+  BackHandler,
 } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
@@ -17,11 +18,12 @@ import { Icon } from 'react-native-elements';
 export default class AllContactsScreen extends React.Component {
     render() {
       return (
-        <View>
-          <Text>List of all contacts</Text>
+        <View style={{width:'100%',height:300,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+          <Text style={{textAlign: 'center', margin: 15}}>List of all data of Flowers</Text>
           <Button
-            onPress={() => this.props.navigation.navigate('Chat', { user: 'Lucy' })}
-            title="Chat with Lucy"
+            onPress={() => this.props.navigation.navigate('Chat', { user: 'Flower' })}
+            title="Data of Flowers"
+            color="#447f2c"
           />
         </View>
         );

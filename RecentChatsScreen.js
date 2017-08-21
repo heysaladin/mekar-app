@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Platform,
+  BackHandler,
 } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
@@ -16,7 +17,9 @@ import { Icon } from 'react-native-elements';
 
 export default class RecentChatsScreen extends React.Component {
     render() {
-      return <Text>List of recent chats</Text>
+      return <View style={{width:'100%',height:300,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+        <Text style={{textAlign: 'center'}}>How to use Mekar</Text>
+      </View>
     }
   }
   

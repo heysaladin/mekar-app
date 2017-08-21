@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Platform,
+  BackHandler,
 } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
@@ -22,12 +23,15 @@ export default class ChatScreen extends React.Component {
       const isInfo = state.params.mode === 'info';
       const {user} = state.params;
       return {
-        title: isInfo ? `${user}'s Contact Info` : `Chat with ${state.params.user}`,
+        title: isInfo ? `${user}'s Flower Info` : `Data of ${state.params.user}`,
         headerRight: (
+          <View style={{height: '100%',padding: 10,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
           <Button
+            color="#1AA094"
             title={isInfo ? 'Done' : `${user}'s info`}
             onPress={() => setParams({ mode: isInfo ? 'none' : 'info'})}
           />
+          </View>
         ),
       };
     }
@@ -36,8 +40,8 @@ export default class ChatScreen extends React.Component {
       // The screen's current route is passed in to `props.navigation.state`:
       const { params } = this.props.navigation.state;
       return (
-        <View>
-          <Text>Chat with {params.user}</Text>
+        <View style={{width:'100%',height:300,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+          <Text style={{textAlign: 'center'}}>Data of {params.user}</Text>
         </View>
       );
     }

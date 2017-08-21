@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Platform,
+  BackHandler,
 } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
@@ -36,9 +37,24 @@ static navigationOptions = {
     }, 4000);
 
     return (
-      <View>
-        <Text>Hello, Chat App!</Text>
+      <View style={{
+        width: '100%',
+        display: 'flex',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff'
+      }}>
+      <Image
+          source={require('./img/loader.gif')}
+          style={{
+            width: 100,
+            height: 100,
+          }}
+        />
+        {/* #4C4D4F */}
       </View>
+      
     );
   }
 
@@ -56,42 +72,107 @@ class OpenScreenNavigator extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <View style={{backgroundColor:'#447f2c',width: '100%'}}>
         {/* <Text>Hello, Chat App!</Text> */}
 
         <IndicatorViewPager removeClippedSubviews={false}
               style={styles.container}
               indicator={this._renderDotIndicator()}
           >
-              <View style={{backgroundColor:'#544654',width:'100px',height:'90%'}}>
-                  <Text>page one</Text>
-                  <Image
-                    style={styles.stretch}
-                    source={require('./madagascar_penguins.png')}
-                  />
+          <View style={{backgroundColor: '#447f2c',width: '100%',height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+              <Image source={require( './img/bg.png')} style={{resizeMode: 'cover',zIndex: 0,position: 'absolute', left: 0, right: 0,}} />
+              <View style={{ backgroundColor: 'transparent',width: '100%', height: 170, justifyContent: 'center', alignItems: 'center', left: 0, right: 0,}}>
+                  <Image source={require( './img/hexa.png')} style={{flex: 1, resizeMode: 'cover',zIndex: 0,position: 'absolute', width: 150, height: 160,}} />
+                  <Image style={styles.stretch} source={require( './img/icon-1.png')} />
               </View>
-              <View style={{backgroundColor:'#643213',width:'100px',height:'90%'}}>
-                  <Text>page two</Text>
-                  <Image
-                    style={styles.stretch}
-                    source={require('./madagascar_penguins.png')}
-                  />
+              <Text style={{backgroundColor: 'transparent', textAlign: 'center', color: '#fff', fontSize: 24, fontWeight: 'bold', padding: 25, }}>Quick</Text>
+          </View>
+          <View style={{backgroundColor: '#447f2c',width: '100%',height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+              <Image source={require( './img/bg.png')} style={{resizeMode: 'cover',zIndex: 0,position: 'absolute', left: 0, right: 0,}} />
+              <View style={{ backgroundColor: 'transparent',width: '100%', height: 170, justifyContent: 'center', alignItems: 'center', left: 0, right: 0,}}>
+                  <Image source={require( './img/hexa.png')} style={{flex: 1, resizeMode: 'cover',zIndex: 0,position: 'absolute', width: 150, height: 160,}} />
+                  <Image style={styles.stretch} source={require( './img/icon-2.png')} />
               </View>
-              <View style={{backgroundColor:'#1AA094',width:'100px',height:'90%'}}>
-                  <Text>page three</Text>
-                  <Image
-                    style={styles.stretch}
-                    source={require('./madagascar_penguins.png')}
-                  />
-                  {/* <Button title='Button' onPress={this.alert} /> */}
+              <Text style={{backgroundColor: 'transparent', textAlign: 'center', color: '#fff', fontSize: 24, fontWeight: 'bold', padding: 25, }}>Modular</Text>
+          </View>
+          <View style={{backgroundColor: '#447f2c',width: '100%',height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+              <Image source={require( './img/bg.png')} style={{resizeMode: 'cover',zIndex: 0,position: 'absolute', left: 0, right: 0,}} />
+              <View style={{ backgroundColor: 'transparent',width: '100%', height: 170, justifyContent: 'center', alignItems: 'center', left: 0, right: 0,}}>
+                  <Image source={require( './img/hexa.png')} style={{flex: 1, resizeMode: 'cover',zIndex: 0,position: 'absolute', width: 150, height: 160,}} />
+                  <Image style={styles.stretch} source={require( './img/icon-3.png')} />
               </View>
+              <Text style={{backgroundColor: 'transparent', textAlign: 'center', color: '#fff', fontSize: 24, fontWeight: 'bold', padding: 25, }}>Scalable</Text>
+          </View>
+          {/* <View style={{backgroundColor: '#447f2c',width: '100px',height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+              <Image source={require( './img/bg.png')} style={{resizeMode: 'cover',zIndex: 0,position: 'absolute'}} />
+              <View style={{ width: 150, height: 150, display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                  <Image source={require( './img/hexa.png')} style={{flex: 1, resizeMode: 'cover',zIndex: 0,position: 'absolute', width: 150, height: 160,}} />
+                  <Image style={styles.stretch} source={require( './img/icon-2.png')} />
+              </View>
+              <Text style={{textAlign: 'center', color: '#fff', fontSize: 24, fontWeight: 'bold', padding: 25, }}>Modular</Text>
+          </View>
+          <View style={{backgroundColor: '#447f2c',width: '100px',height: '90%', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+              <Image source={require( './img/bg.png')} style={{flex: 1, resizeMode: 'cover',zIndex: 0,position: 'absolute'}} />
+              <View style={{ width: 150, height: 150, display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                  <Image source={require( './img/hexa.png')} style={{flex: 1, resizeMode: 'cover',zIndex: 0,position: 'absolute', width: 150, height: 160,}} />
+                  <Image style={styles.stretch} source={require( './img/icon-3.png')} />
+              </View>
+              <Text style={{textAlign: 'center', color: '#fff', fontSize: 24, fontWeight: 'bold', padding: 25, }}>Scalable</Text>
+          </View> */}
           </IndicatorViewPager>
 
+        <View
+        style={{
+          height: '10%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+        >
+        { Platform.OS !== 'ios' ?
         <Button
+          style={{
+            marginRight:40,
+            marginLeft:40,
+            marginTop:10,
+            paddingTop:20,
+            paddingBottom:20,
+            paddingLeft: 35,
+            paddingRight: 35,
+            backgroundColor:'#68a0cf',
+            borderRadius:25,
+            borderWidth: 1,
+            borderColor: '#fff',
+            boxShadow: 'none',
+            letterSpacing: 2,
+          }}
           onPress={() => navigate('Home')}
           /* onPress={() => navigate('Chat', { user: 'Lucy' })} */
-          title="Chat with Lucy"
+          title="Skip"
+          color="#447f2c"
         />
+          :
+        <Button
+          style={{
+            marginRight:40,
+            marginLeft:40,
+            marginTop:10,
+            paddingTop:20,
+            paddingBottom:20,
+            backgroundColor:'#68a0cf',
+            borderRadius:25,
+            borderWidth: 1,
+            borderColor: '#fff',
+            boxShadow: 'none',
+            letterSpacing: 2,
+          }}
+          onPress={() => navigate('Home')}
+          /* onPress={() => navigate('Chat', { user: 'Lucy' })} */
+          title="Skip"
+          color="#fff"
+        />
+        }
+        </View>
       </View>
     );
   }
@@ -105,9 +186,19 @@ class OpenScreenNavigator extends React.Component {
 
 const MainScreenNavigator = TabNavigator({
   Home: { screen: HomeChatsScreen },
-  Recent: { screen: RecentChatsScreen },
+  How: { screen: RecentChatsScreen },
   All: { screen: AllContactsScreen },
-});
+}, {tabBarOptions: {
+  style: {
+    backgroundColor: '#447f2c',
+    // borderBottomWidth: 2,
+    // borderBottomColor: '#1AA094'
+  },
+  labelStyle: {
+    fontSize: 12,
+    color: '#fff',
+  }
+}});
 
 const SimpleApp = StackNavigator({
   Splash: { screen: SplashScreenNavigator },
@@ -119,16 +210,20 @@ const SimpleApp = StackNavigator({
 // , headerMode: 'none'
 
 MainScreenNavigator.navigationOptions = {
-  title: 'My Chats',
+  title: 'MEKAR',
   headerRight: (
 
-  <MenuContext style={{ flex: 1 }}>
+  <View style={{height: '100%',padding: 10,display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+    <MenuContext style={{ flex: 1 }}>
 
   { Platform.OS !== 'ios' ?
+    
     <Button
-          onPress={() => alert('Chat')}
-          title="Chat with Lucy"
+          onPress={() => alert('Should be go to Dashboard')}
+          title="Dashboard"
+          color="#1AA094"
         />
+        
       :
     <Menu onSelect={(value) => alert(`User selected the number ${value}`)}>
       <MenuTrigger>
@@ -136,15 +231,16 @@ MainScreenNavigator.navigationOptions = {
       </MenuTrigger>
       <MenuOptions>
         <MenuOption value={1}>
-          <Text>One</Text>
-        </MenuOption>
-        <MenuOption value={2}>
-          <Text>Two</Text>
+          <Text onPress={() => alert('Should be go to Dashboard')}>Dashboard</Text>
         </MenuOption>
       </MenuOptions>
     </Menu>
+
   }
 </MenuContext>
+
+
+</View>
 
   ),
 };
